@@ -4,4 +4,3 @@ def show_message() :
 print("시작")
 show_message()
 print("마침")
-        
