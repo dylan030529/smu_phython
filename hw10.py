@@ -1,44 +1,30 @@
-import pickle
+class Productmanager:
+    def init(self):
+        self.products = {}
 
-def input_scores():
-    scores = []
-    i = 1
-    while True:
-        score = int(input(f"#{i}? "))
-        if score < 0:
-            break
-        scores.append(score)
-        i += 1
-    return scores
+    def add_update_product(self, name, price):
+        self.products[name] = price
 
-def get_average(scores):
-    return sum(scores) / len(scores)
+    def remove_products(self, name):
+        if name in self.products:
+            del self.products[name]
 
-def show_scores(scores):
-    print("개인점수:", end=' ')
-    for score in scores:
-        print(score, end=' ')
-    print()
-    print(f"평균: {get_average(scores):.1f}")
+    @staticmethod
+    def show_all(self):
+        print(f"--현재 메뉴 상태")
+        for key in self.products.keys():
+            print(f" {key.name}: {key.price}원")
 
-def save_scores(scores):
-    with open("score.bin", "wb") as file:
-        pickle.dump(scores, file)
+    shop = ProductManager(self)
+    shop.add_update_product("커피", 3000)
+    shop.add_update_product("케이크", 5000)
+    shop.show_all()
 
-def load_scores():
-    with open("score.bin", "rb") as file:
-        return pickle.load(file)
+    shop.remove_product("커피", 3000)
+    shop.show_all()
 
-def main():
-    try:
-        scores = load_scores()
-        print("[파일 읽기]")
-    except:
-        print("[점수 입력]")
-        scores = input_scores()
-        save_scores(scores)
-
-    print("\n[점수 출력]")
-    show_scores(scores)
-
-main()
+이 코드는 메뉴관리를 위한 클래스의 정의와 함께 이를 사용하는 주 프로그램부를 포함하고 있다
+이 클래스는 상품 추가 수정 삭제 및 전체 메뉴 보기 기능을 포함한다
+하지만 제대로 동작하지 않는데 어느 부분들이 고쳐져야 제대로 동작할 수 있는지 알려줘
+    
+    
